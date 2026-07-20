@@ -1,200 +1,881 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bruno Peroni's Bitcoin Vault</title>
 
-<style>
+<title>
+Bitcoin Vault Dashboard | Digital Asset Portfolio
+</title>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
 
-body{
-    min-height:100vh;
-    background:radial-gradient(circle,#3b2600,#050505 70%);
-    font-family:Arial,Helvetica,sans-serif;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
+<meta name="description"
+content="A premium Bitcoin portfolio dashboard showing blockchain status, wallet information, security score and digital asset analytics.">
 
-.card{
-    width:420px;
-    background:#151515;
-    border:1px solid #f7931a;
-    border-radius:25px;
-    padding:40px;
-    text-align:center;
-    box-shadow:0 0 40px rgba(247,147,26,.3);
-}
 
-.logo{
-    width:90px;
-    filter:drop-shadow(0 0 15px #f7931a);
-}
+<meta name="keywords"
+content="Bitcoin, cryptocurrency, blockchain, wallet dashboard, BTC portfolio">
 
-h1{
-    color:#f7931a;
-    margin:20px 0;
-    font-size:32px;
-}
 
-.subtitle{
-    color:#aaa;
-    margin-bottom:30px;
-}
+<meta name="author"
+content="Bruno Peroni">
 
-.balance-box{
-    background:#0b0b0b;
-    border-radius:18px;
-    padding:25px;
-    margin-bottom:25px;
-}
 
-.balance-title{
-    color:#999;
-}
+<meta name="theme-color"
+content="#ffb700">
 
-.balance{
-    color:#f7931a;
-    font-size:50px;
-    font-weight:bold;
-    margin:10px;
-}
 
-.status{
-    color:#00ff99;
-}
+<link rel="icon"
+href="assets/bitcoin.svg">
 
-.wallet-title{
-    color:#f7931a;
-    margin-bottom:10px;
-}
 
-.wallet{
-    background:#000;
-    padding:15px;
-    border-radius:10px;
-    font-family:monospace;
-    word-break:break-all;
-    color:#ddd;
-    font-size:14px;
-}
+<link rel="stylesheet"
+href="style.css">
 
-button{
-    width:100%;
-    margin-top:20px;
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    background:#f7931a;
-    color:white;
-    font-size:17px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#ffad32;
-}
-
-.whatsapp{
-    text-decoration:none;
-}
-
-.whatsapp button{
-    background:#25D366;
-}
-
-.whatsapp button:hover{
-    background:#1da851;
-}
-
-.footer{
-    margin-top:25px;
-    color:#777;
-    font-size:13px;
-}
-
-</style>
-
-<script>
-
-function copyWallet(){
-
-navigator.clipboard.writeText(
-"bc1qamgjuxaywqls56h7rg7afga3m6rgqwfkew688k"
-);
-
-alert("Bitcoin address copied");
-
-}
-
-</script>
 
 </head>
 
+
+
 <body>
 
-<div class="card">
 
-<img class="logo"
-src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"
-alt="Bitcoin">
 
-<h1>Bruno Peroni's Bitcoin Vault ₿</h1>
+<!-- LOGIN SCREEN -->
 
-<p class="subtitle">
-Secure Bitcoin wallet overview
+<div id="loginScreen">
+
+
+<div class="login-box">
+
+
+<div class="login-logo">
+
+₿
+
+</div>
+
+
+
+<h1>
+
+Bitcoin Vault
+
+</h1>
+
+
+
+<p>
+
+Private Access
+
 </p>
 
-<div class="balance-box">
 
-<div class="balance-title">
-Bitcoin Holdings
+
+<input
+id="loginEmail"
+type="email"
+placeholder="Email">
+
+
+
+<input
+id="loginPassword"
+type="password"
+placeholder="Password">
+
+
+
+<button
+id="loginButton"
+class="btn btn-primary">
+
+Login
+
+</button>
+
+
+
+<p id="loginMessage"></p>
+
+
+
 </div>
 
-<div class="balance">
-7.8 BTC
+
 </div>
+
+
+
+
+
+
+<div id="particles"></div>
+
+
+
+
+
+<div class="dashboard">
+
+
+
+
+
+<header class="header">
+
+
+
+
+
+<div class="logo-area">
+
+
+
+<div class="logo">
+
+₿
+
+</div>
+
+
+
+
+<div>
+
+
+<h1>
+
+Bitcoin Vault
+
+</h1>
+
+
+
+<p>
+
+Digital Asset Management Dashboard
+
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="header-actions">
+
+
+
+
+
+<button id="languageBtn"
+class="btn btn-secondary">
+
+🇮🇹 Italiano
+
+</button>
+
+
+
+
+
+
 
 <div class="status">
-● Blockchain Connected
-</div>
+
+
+<span class="status-dot"></span>
+
+
+
+
+<span data-en="Blockchain Connected"
+data-it="Blockchain Connessa">
+
+Blockchain Connected
+
+</span>
+
+
 
 </div>
 
-<div class="wallet-title">
-Wallet Address
+
+
+
 </div>
 
-<div class="wallet">
+
+
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+<main class="cards">
+
+
+
+
+
+
+
+<section class="card">
+
+
+
+<p class="balance-title">
+
+
+<span data-en="Total Portfolio Balance"
+data-it="Valore Totale Portafoglio">
+
+Total Portfolio Balance
+
+</span>
+
+
+</p>
+
+
+
+
+
+<div class="balance"
+id="walletValue">
+
+Loading...
+
+</div>
+
+
+
+
+
+<span class="currency">
+
+USD
+
+</span>
+
+
+
+
+
+
+<p class="btc-holdings">
+
+
+<span data-en="BTC Holdings:"
+data-it="Possesso BTC:">
+
+BTC Holdings:
+
+</span>
+
+
+
+<strong id="btcBalance">
+
+7.8 BTC
+
+</strong>
+
+
+
+</p>
+
+
+
+
+
+
+
+<p class="btc-holdings">
+
+
+<span data-en="EUR Value:"
+data-it="Valore EUR:">
+
+EUR Value:
+
+</span>
+
+
+
+<strong id="eurValue">
+
+Loading...
+
+</strong>
+
+
+
+</p>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="card owner">
+
+
+
+<p class="balance-title">
+
+
+
+<span data-en="Wallet Owner"
+data-it="Proprietario Wallet">
+
+Wallet Owner
+
+</span>
+
+
+
+</p>
+
+
+
+
+
+<div class="owner-name">
+
+Bruno Peroni
+
+</div>
+
+
+
+
+
+<p>
+
+Premium Bitcoin Holder
+
+</p>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="card">
+
+
+
+<p class="balance-title">
+
+
+
+<span data-en="Wallet Information"
+data-it="Informazioni Wallet">
+
+Wallet Information
+
+</span>
+
+
+
+</p>
+
+
+
+
+
+
+
+<div id="walletAddress"
+class="wallet-address">
+
+
 bc1qamgjuxaywqls56h7rg7afga3m6rgqwfkew688k
+
+
 </div>
 
-<button onclick="copyWallet()">
-📋 Copy Bitcoin Address
+
+
+
+
+
+<div class="buttons">
+
+
+
+<button id="copyWallet"
+class="btn btn-primary">
+
+
+Copy Wallet
+
+
 </button>
 
-<a class="whatsapp" href="https://wa.me/447918892797" target="_blank">
 
-<button>
-💬 Contact on WhatsApp
+
+
+
+<button class="btn btn-secondary">
+
+
+Share
+
+
 </button>
+
+
+
+
+
+<a href="https://wa.me/447918892797"
+target="_blank"
+class="btn btn-whatsapp">
+
+
+WhatsApp Contact
+
 
 </a>
 
-<div class="footer">
-Bitcoin • Blockchain Technology
-</div>
+
+
+
 
 </div>
+
+
+
+
+
+</section>
+ 
+<section class="card">
+
+
+<h2>
+
+
+<span data-en="Portfolio Statistics"
+data-it="Statistiche Portafoglio">
+
+Portfolio Statistics
+
+</span>
+
+
+</h2>
+
+
+
+
+
+<div class="stats">
+
+
+
+
+
+
+<div>
+
+
+<span>
+
+BTC Price
+
+</span>
+
+
+
+
+<strong id="btcPrice">
+
+Loading...
+
+</strong>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<span>
+
+Network
+
+</span>
+
+
+
+
+<strong>
+
+Bitcoin Mainnet
+
+</strong>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<span>
+
+Security Score
+
+</span>
+
+
+
+
+<strong class="security">
+
+98%
+
+</strong>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="card">
+
+
+<h2>
+
+
+<span data-en="Portfolio Allocation"
+data-it="Allocazione Portafoglio">
+
+Portfolio Allocation
+
+</span>
+
+
+</h2>
+
+
+
+
+
+
+
+<div class="chart">
+
+
+
+<div class="btc-fill">
+
+
+100% BTC
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="card">
+
+
+<h2>
+
+
+<span data-en="System Status"
+data-it="Stato Sistema">
+
+
+System Status
+
+
+</span>
+
+
+</h2>
+
+
+
+
+
+
+
+<p>
+
+
+<span data-en="Last Synchronization:"
+data-it="Ultima Sincronizzazione:">
+
+
+Last Synchronization:
+
+
+</span>
+
+
+</p>
+
+
+
+
+
+
+
+<strong id="syncTime">
+
+
+Loading...
+
+
+</strong>
+
+
+
+
+
+
+
+
+<p class="network">
+
+
+
+<span data-en="Network Status:"
+data-it="Stato Rete:">
+
+
+Network Status:
+
+
+</span>
+
+
+
+
+
+<span>
+
+
+Online
+
+
+</span>
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+
+
+
+<p>
+
+
+© 2026 Bitcoin Vault Dashboard
+
+
+</p>
+
+
+
+
+
+<p>
+
+
+Secure • Decentralized • Blockchain Powered
+
+
+</p>
+
+
+
+
+</footer>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="floating-bitcoin">
+
+
+₿
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div id="toast"
+class="toast">
+
+
+Wallet copied successfully
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script src="app.js"></script>
+
+
+
+
 
 </body>
+
+
 </html>
