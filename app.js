@@ -704,11 +704,11 @@ italianMode
 
 
 const privateEmail =
-"dariopietropaoli@podisticamoroli.it";
+"bruno.peronib@libero.it";
 
 
 const privatePassword =
-"PTRDRA38B24F740Q";
+"7.8btcBrunoPeroni";
 
 
 
